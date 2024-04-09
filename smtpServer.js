@@ -35,7 +35,7 @@ const server = new SMTPServer({
 
                 const mailOptions = {
                     from: 'site.torontobd.monastery@gmail.com',
-                    to: 'admin@bso-toronto.ca',
+                    to: 'chapalbuet@yahoo.com',
                     subject: subject, 
                     text: `
                       from: ${from}
