@@ -29,8 +29,8 @@ const server = new SMTPServer({
         stream.on('data', (data)=>{
             simpleParser(data)
             .then(mail => {
-                let from = mail.headers.get('from').value[0];
-                let to = mail.headers.get('to').value[0];
+                let from = mail.headers.get('from').value[0].address;
+                let to = mail.headers.get('to').value[0].address;
                 let subject = mail.subject;
                 let text = mail.text;
 
