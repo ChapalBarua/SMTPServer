@@ -1,0 +1,23 @@
+{
+  "name": "smtpserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "smtpServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChapalBarua/SMTPServer.git"
+  },
+  "author": "Chapal Barua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChapalBarua/SMTPServer/issues"
+  },
+  "homepage": "https://github.com/ChapalBarua/SMTPServer#readme",
+  "dependencies": {
+    "mailparser": "^3.6.9",
+    "smtp-server": "^3.13.3"
+  }
+}
