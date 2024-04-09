@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ChapalBarua/SMTPServer#readme",
   "dependencies": {
     "mailparser": "^3.6.9",
-    "smtp-server": "^3.13.3"
+    "smtp-server": "^3.13.3",
+    "nodemailer": "^6.9.8"
   }
 }

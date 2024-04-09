@@ -1,5 +1,14 @@
 const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'site.torontobd.monastery@gmail.com',
+      pass: emailPasscode
+    }
+});
+
 const server = new SMTPServer({
     allowInsecureAuth: true,
     authOptional: true,
@@ -17,15 +26,35 @@ const server = new SMTPServer({
     },
     onData(stream, session, cb){
         stream.on('data', (data)=>{
-            
             simpleParser(data)
-            .then(parsed => {
-                console.log(parsed);
+            .then(mail => {
+                let from = mail.headers.get('from').value.address[0];
+                let to = mail.headers.get('to').value.address[0];
+                let subject = mail.subject;
+                let text = mail.text;
+
+                const mailOptions = {
+                    from: 'site.torontobd.monastery@gmail.com',
+                    to: 'admin@bso-toronto.ca',
+                    subject: subject, 
+                    text: `
+                      from: ${from}
+                      to: ${to}
+                      Message: ${text}
+                    `
+                };
+
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                     console.log('Error sending email:-'+ error);
+                    } else {
+                      console.log('Email sent successfully');
+                    }
+                });
             })
             .catch(err => {
-                console.log(error);
+                console.log('Error sending email:-'+ err);
             });
-            //console.log(`onData ${data.toString()}`);
         });
         stream.on('end', cb);
     }
