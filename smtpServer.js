@@ -1,6 +1,7 @@
 const SMTPServer = require("smtp-server").SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 const nodemailer = require('nodemailer');
+const emailPasscode = require('/home/ec2-user/secrets/secret_keys_backend');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
